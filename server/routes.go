@@ -6,7 +6,6 @@ import (
 )
 
 func (s *Server) initializeRoutes() {
-	s.Router.GET("/", middlewares.SetMiddlewareJSON(handlers.Home))
-	s.Router.POST("/image", middlewares.SetMiddlewareJSON(handlers.UploadImage))
-	
-}
+	s.Router.GET("/", handlers.Home)
+	s.Router.POST("/images", middlewares.AuthGuard(handlers.UploadImage))
+} 
