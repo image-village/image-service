@@ -1,7 +1,7 @@
 package main
 
-import "github.com/lagbana/images/api"
+import "github.com/lagbana/images/server"
 
 func main() {
-	api.Run()
+	server.Run() 
 }
