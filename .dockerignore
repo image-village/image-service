@@ -2,3 +2,4 @@
 .idea
 scripts/db_migrations
 images.iml
+.env

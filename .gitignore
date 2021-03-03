@@ -17,3 +17,5 @@
 .env
 
 gin-bin
+
+gcp-storage-account.json
