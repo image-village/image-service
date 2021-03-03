@@ -11,6 +11,9 @@ type Env struct {
 	DbHost string `env:"DB_HOST"`
 	DbUser string `env:"DB_USER"`
 	DbPassword string `env:"DB_PASSWORD"`
+	GcpAppCredentials string `env:"GOOGLE_APPLICATION_CREDENTIALS"`
+	GcpProjectID string `env:"GCP_PROJECT_ID"`
+	AppEnv string `env:"APP_ENV"`
 }
 
 
