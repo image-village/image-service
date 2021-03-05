@@ -14,6 +14,7 @@ type Env struct {
 	GcpAppCredentials string `env:"GOOGLE_APPLICATION_CREDENTIALS"`
 	GcpProjectID string `env:"GCP_PROJECT_ID"`
 	AppEnv string `env:"APP_ENV"`
+	BucketName string `env:"BUCKET_NAME"`
 }
 
 
