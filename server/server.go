@@ -2,12 +2,11 @@ package server
 
 import (
 	"fmt"
-	"github.com/julienschmidt/httprouter"
-	"github.com/lagbana/images/config"
-	"github.com/lagbana/images/db"
-	"github.com/lagbana/images/server/middlewares"
 	"log"
 	"net/http"
+	"github.com/julienschmidt/httprouter"
+	"github.com/lagbana/images/data"
+	"github.com/lagbana/images/server/middlewares"
 )
 
 // Server -
@@ -20,13 +19,14 @@ var s = Server{}
 // Run -
 func Run() {
 	s.Router = httprouter.New()
-	env := config.EnvSetup()
-	s.initializeRoutes()
 	// Connect to database
-	db.Connect(env.DbName, env.DbHost, env.DbUser, env.DbPassword)
-
+	db, err := data.ConnectDB()
+	if  err != nil {
+		log.Fatal(err)
+	}
+	s.initializeRoutes()
 	// Check for authentication on all incoming requests
 	m := middlewares.GlobalAuthCheck(s.Router)
-	fmt.Println("Listening to port 8080")
+	fmt.Printf("🚀Connected to %s Database and Listening on port 8080\n", db.Session.Name())
 	log.Fatal(http.ListenAndServe(":8080", m))
 }
