@@ -1,4 +1,4 @@
-package data
+package data 
 
 import (
 	"fmt"
@@ -17,8 +17,8 @@ type Image struct {
 }
 
 // ImagesStore represents a store for images
-type ImagesStore struct {
-	db.Collection
+type ImagesStore struct { 
+	db.Collection 
 }
 
 // GetImageByID - get one image by its ID
@@ -50,7 +50,7 @@ func (images *ImagesStore) GetAllImages(userID string) (*[]Image, error) {
 	return &imgs, nil
 }
 
-// AddImage - get all images
+// AddImage - insert a new image record
 func (images *ImagesStore) AddImage(image Image) (*Image, error) {
 	err := images.InsertReturning(&image)
 	if err != nil {
@@ -66,7 +66,8 @@ func Images(sess db.Session) *ImagesStore {
 
 // Store returns images collection
 func (image *Image) Store(sess db.Session) db.Store {
-	return Images(sess)
+	return Images(sess) // ! REMOVE
+	// return &ImagesStore{sess.Collection("images")}
 }
 
 // BeforeUpdate event driven hook
