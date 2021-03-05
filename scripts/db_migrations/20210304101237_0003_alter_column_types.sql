@@ -1,0 +1,7 @@
+-- +goose Up
+ALTER TABLE images
+ALTER COLUMN gcp_id TYPE TEXT,
+ALTER COLUMN title TYPE TEXT,
+ALTER COLUMN url TYPE TEXT;
+-- +goose Down
+

@@ -11,12 +11,3 @@ CREATE TABLE images (
 );
 -- +goose Down
 DROP TABLE images
-
-
--- CREATE INDEX images_email_idx ON images (email);
-
--- DROP INDEX images_email_idx;
-
--- EXPLAIN ANALYZE SELECT *
--- FROM images
--- WHERE email = "larrya@email.com";
